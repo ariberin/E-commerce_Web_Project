@@ -1,4 +1,4 @@
-WEB PROJECT
+DJANGO WEB PROJECT
 
-This is my first web project, still in construction.
+This is my first web project using Django framework, still in construction.
 
