@@ -290,3 +290,13 @@ ul.errorlist{
   color: cadetblue;
   text-decoration: none;
 }
+
+.contenedorFormulario{
+
+  background-color: cadetblue;
+  width: 50%;
+  margin: 10px auto;
+  border-radius: 5px;
+  padding: 7px 7px;
+
+}
