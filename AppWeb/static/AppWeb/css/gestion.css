@@ -94,7 +94,7 @@ p {
 }
 
 #mainNav .navbar-nav .nav-item.active .nav-link {
-  color: #ffffff;
+  color: rgb(255, 115, 0);
   text-decoration: underline;
 }
 
@@ -262,7 +262,7 @@ a.link{
 
 a.link:hover{
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.4);
+  color:rgb(255, 115, 0);
 }
 
 .section-content{
@@ -287,13 +287,13 @@ ul.errorlist{
 
 .linksCategorias:hover{
 
-  color: cadetblue;
+  color: rgb(255, 115, 0);
   text-decoration: none;
 }
 
 .contenedorFormulario{
 
-  background-color: cadetblue;
+  background-color: rgb(197, 89, 0);
   width: 50%;
   margin: 10px auto;
   border-radius: 5px;
