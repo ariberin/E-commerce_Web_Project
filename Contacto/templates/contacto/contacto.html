@@ -5,13 +5,16 @@
 {% block content %}
 
 <div class="contenedorFormulario">
+
+    
+    {% if "valido" in request.GET %}
+        <p style="color: white">Mensaje enviado correctamente. Dentro de las 48 horas hábiles nos contactaremos con usted.</p> 
+    {% endif %}
     <form action="" method="POST" style="text-align: center;">
         {% csrf_token %}
         <table style="color: white; margin: 20px auto">{{formulario.as_table}}</table>
         <input type="submit" value="Enviar" style="width: 150px">
     </form>
 </div>
-
-<p style="color: white">{{request.POST}}</p>
 
 {% endblock %}
