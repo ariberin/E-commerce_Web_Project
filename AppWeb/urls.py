@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from AppWeb.views import home, tienda, contacto
+from AppWeb.views import home, tienda
 from django.conf import settings
 from django.conf.urls.static import static
 
