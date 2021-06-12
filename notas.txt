@@ -1,0 +1,166 @@
+Modelo Vista Controlador - Model View Controller (MVC)
+Consuste en dividir cualquier app en tres grandes modulos: modelo, vista y controlador. Al dividir es mas funcional, mantenible, escalable
+
+Modelo: se encarga de gestionar datos, obtener info de BBDD
+Vista: muestra info al usuario, interactua c el usuario
+Controlador: se ecnarga comunicaciones entre vista y modelo
+
+Ej.: usuario hace peticion a formulario web (vista), y es registrada por el controlador, que demanda datos a la BBDD (modelo), que se lo envia al controlador, y luego a la vista
+
+
+DJANGO: Model Template View (MTV)
+Sustituye las vistas por un template, el controlador por el view. Es lo mismo que MVC
+
+Instalacion local (unica version depython y de django) vs virtual (varias versiones)
+
+BOOTSTRAP: framework (conjunto librerias) de CSS para dar formatio al sitio web, es responsive (se adapta al dispositivo)
+cargar los static en el home.html y luego estrucutrarlos bien
+ 
+     {% load static %}
+
+        <!-- Bootstrap -->
+        <link href="{% static 'AppWeb/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+-------
+
+en consola: 
+
+django-admin startproject Proyecto1
+manage.py migrate
+manage.py runserver
+
+
+-- 
+
+!!!CADA VEZ QUE HAGO UN CAMBIO DENTRO DEL CODIGO VIEWS TENGO QUE VOLVER A HACER TODAS LAS MIGRACIONES!!!
+Al crear APP, registrarla en settings installed apps !!!
+
+manage.py startapp GestionPedidos
+manage.py check GestionPedidos
+
+
+manage.py makemigrations (make ddbb)
+manage.py sqlmigrate GestionPedidos 0001
+manage.py migrate
+
+manage.py shell
+create
+            from GestionPedidos.models import Articulos
+            art = Articulos(nombre='mesa', seccion='decoración', precio=90)
+            art.save()
+
+            art3 = Articulos.objects.create(nombre='martillo', seccion='ferretería', precio=55)
+            cli = Clientes.objects.create(nombre='Don Pedro', direccion='Calle Siempre Viva 1234', email='donpedrito@don.com', tel='1598786330')
+
+
+update
+            art.precio=120
+            art.save()
+
+delete   
+            art4 = Articulos.objects.get(id=2)
+            art4.delete()
+
+select 
+            Lista=Articulos.objects.all()
+            Lista (devuelve objeto)
+            Lista.query.__str__()
+
+            funcion __str__ par que devuelva la info coorecta y leible.
+            Articulos.objects.filter(seccion='deporte') (devuelve objeto) WHERE IN sSQLITE
+            Articulos.objects.filter(nombre='pelota', seccion='deporte')
+            Articulos.objects.filter(seccion='indumentaria', precio__gte=70) GTE=grather than >
+            Articulos.objects.filter(seccion='indumentaria', precio__lte=70) LTE=lower than <
+            Articulos.objects.filter(seccion='tecnología', precio__range=(50,500))
+            Articulos.objects.filter(precio__gte=12).order_by('precio') ORDER BY ASC
+            Articulos.objects.filter(precio__gte=12).order_by('-precio') ORDER BY DESC
+
+
+
+----
+
+postgresql
+
+change settings
+pip install psycopg2
+
+manage.py makemigrations
+manage.py migrate
+manage.py shell (igual que arriba)
+
+
+
+------------
+
+plantillas: 
+cadenas de texto, generalmente HTML
+sirven para separar la parte logica (los datos, el codigo) de la parte visual (presentacion, disenio) de un doc web
+
+1. crear template, que lea doc externo
+2. crear contexto, datos adicionales, variables funciones etc
+3. renderizar template
+
+jerarquia u orden de llamadas del punto desde plantilla: diccionario, atributo, metodo, indice de lista 
+
+
+loader (cargador de plantilla): importar loader e ir a TEMPLATES de settings.py
+
+herencia de plantillas:
+plantilla principal con cabecera y pie iguales, y un cuerpo/bloque cambiante
+
+
+----------
+
+proyecto (contiene aplicaciones) != aplicacion (forma parte de un proyecto)
+
+ejemplo: proyecto1 = tiedna online
+         app 1 panel control
+         app 2 stock almacen
+         app 3 ventas
+         app 4 pagos
+         etc
+         proyecto2 = gestion de almacen
+         app 1 proveedores
+         app 2 = app 2 proyecto1 (reutilizacion, modularizacion)
+
+A ELABORAR:  proyecto = Tienda Online 
+                      App = GestionPedidos
+                            bbdd con tablas clientes, articulos y pedidos
+
+crear tablas de bbdd con django = CLASE Model
+
+------
+
+panel de control/administracion: permite create, update, delete, select de la bbdd sin tener que explicitarlo
+manipular tablas visualmente y no con codigo sql
+
+manage.py createsuperuser
+
+crear mas usuarios dentro de la pagina de admin, y poder darles permisos y crear grupos
+
+add info to admin.py:
+
+      from GestionPedidos.models import Cliente, Articulo, Pedido
+
+      admin.site.register(Cliente)
+      admin.site.register(Articulo)
+      admin.site.register(Pedido)
+
+
+-----
+
+formulario: envio de datos al servidor mediante un request (HttpRequest)
+se cre un html, un template, luego se registra la URL y despues crear una vista que nos lleve al template y luego a la URL
+
+EMAIL. para que me llegue un email cuando alguien me manda un mensaje por la web.
+settings.py EMAIL_BACKEND, etc
+
+API FORMS
+crear forms.py
+
+instanciar clase desde shell para probar si funciona
+
+print(formu.as_p()) para que aparezca com parrafo y no como tabla que es default
+
+formul=FormularioContacto({'asunto':'prueba', 'email':'hola@hola.es', 'mensaje':'mensaje de prueba'}) para que mande algo en especifico
+formul.is_valid()
+formul.cleaned_data      devuelve dicc con la info
