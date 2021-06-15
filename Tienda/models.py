@@ -7,7 +7,7 @@ from django.db.models.fields.related import ForeignKey, ManyToManyField
 
 
 class CategoriaProducto(models.Model):  # Mapeo ORM
-    nombre = CharField(max_length=50)
+    nombre = CharField(max_length=200)
     created = DateTimeField(auto_now_add=True)
     updated = DateTimeField(auto_now_add=True)
 
@@ -20,7 +20,7 @@ class CategoriaProducto(models.Model):  # Mapeo ORM
 
 
 class ProductoTienda(models.Model):
-    titulo = CharField(max_length=100)
+    nombre = CharField(max_length=100)
     categorias = ForeignKey(CategoriaProducto, on_delete=CASCADE)
     imagen = ImageField(upload_to='tienda')
     precio = FloatField()
