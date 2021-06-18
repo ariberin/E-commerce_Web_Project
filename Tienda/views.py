@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from .models import ProdTienda
+from Tienda.models import Producto
 
 
 def tienda(request):
 
-    productos = ProdTienda.objects.all()
+    productos = Producto.objects.all()
 
     return render(request, "Tienda/tienda.html", {"productos": productos})

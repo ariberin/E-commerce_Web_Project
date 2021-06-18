@@ -2,26 +2,25 @@ from django.db.models.deletion import CASCADE
 from django.db.models.fields import *
 from django.db import models
 from django.db.models.fields.files import ImageField
-from django.contrib.auth.models import User
 from django.db.models.fields.related import ForeignKey
 
 
-class CategoriaProd(models.Model):  # Mapeo ORM
+class Categoria(models.Model):  # Mapeo ORM
     nombre = CharField(max_length=200)
     created = DateTimeField(auto_now_add=True)
     updated = DateTimeField(auto_now_add=True)
 
     class Meta:
-        verbose_name = 'categoriaProducto'
-        verbose_name_plural = 'categoriasProductos'
+        verbose_name = 'categoria'
+        verbose_name_plural = 'categorias'
 
     def __str__(self):
         return self.nombre
 
 
-class ProdTienda(models.Model):
-    titulo = CharField(max_length=100)
-    categorias = ForeignKey(CategoriaProd, on_delete=CASCADE)
+class Producto(models.Model):
+    titulo = CharField(max_length=50)
+    categorias = ForeignKey(Categoria, on_delete=CASCADE)
     imagen = ImageField(upload_to='tienda')
     precio = FloatField()
     disponibilidad = BooleanField(default=True)
