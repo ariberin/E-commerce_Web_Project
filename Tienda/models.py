@@ -3,10 +3,10 @@ from django.db.models.fields import *
 from django.db import models
 from django.db.models.fields.files import ImageField
 from django.contrib.auth.models import User
-from django.db.models.fields.related import ForeignKey, ManyToManyField
+from django.db.models.fields.related import ForeignKey
 
 
-class CategoriaProducto(models.Model):  # Mapeo ORM
+class CategoriaProd(models.Model):  # Mapeo ORM
     nombre = CharField(max_length=200)
     created = DateTimeField(auto_now_add=True)
     updated = DateTimeField(auto_now_add=True)
@@ -19,9 +19,9 @@ class CategoriaProducto(models.Model):  # Mapeo ORM
         return self.nombre
 
 
-class ProductoTienda(models.Model):
-    nombre = CharField(max_length=100)
-    categorias = ForeignKey(CategoriaProducto, on_delete=CASCADE)
+class ProdTienda(models.Model):
+    titulo = CharField(max_length=100)
+    categorias = ForeignKey(CategoriaProd, on_delete=CASCADE)
     imagen = ImageField(upload_to='tienda')
     precio = FloatField()
     disponibilidad = BooleanField(default=True)

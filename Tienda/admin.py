@@ -1,14 +1,14 @@
 from django.contrib import admin
+from .models import CategoriaProd, ProdTienda
 
-from .models import CategoriaProducto, ProductoTienda
 
-
-class CateProdAdmin(admin.ModelAdmin):
-    readonly_fields = ("created", "updated")
-
-class ProdTienAdmin(admin.ModelAdmin):
+class CategoriaProductoAdmin(admin.ModelAdmin):
     readonly_fields = ("created", "updated")
 
 
-admin.site.register(CategoriaProducto, CateProdAdmin)
-admin.site.register(ProductoTienda, ProdTienAdmin)
+class ProductoTiendaAdmin(admin.ModelAdmin):
+    readonly_fields = ("created", "updated")
+
+
+admin.site.register(CategoriaProd, CategoriaProductoAdmin)
+admin.site.register(ProdTienda, ProductoTiendaAdmin)
