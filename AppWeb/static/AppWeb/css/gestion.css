@@ -80,13 +80,14 @@ p {
 }
 
 #mainNav {
-  background-color: rgba(24, 64, 8);
+  background-color: rgba(0, 0, 0, 0.9);
   font-family: 'Raleway';
 }
 
 #mainNav .navbar-brand {
   color: #ffffff;
 }
+
 
 #mainNav .navbar-nav .nav-item .nav-link {
   color: rgba(255, 255, 255, 0.7);
@@ -95,7 +96,6 @@ p {
 
 #mainNav .navbar-nav .nav-item.active .nav-link {
   color: rgb(255, 115, 0);
-  text-decoration: underline;
 }
 
 @media (min-width: 992px) {
@@ -104,12 +104,17 @@ p {
   }
   #mainNav .navbar-nav .nav-item .nav-link:hover {
     color: rgba(255, 255, 255, 0.4);
-    text-decoration: underline;
+    text-decoration: underline rgba(255, 255, 255, 0.4);
+    transition: 300ms;
+
 
   }
   #mainNav .navbar-nav .nav-item.active .nav-link:hover {
-    color: #ffffff;
-    text-decoration: underline;
+    color: rgba(255, 115, 0, 0.5);
+    text-decoration: underline rgba(255, 115, 0, 0.5);
+    transition: 300ms;
+
+
   }
 }
 
@@ -229,7 +234,7 @@ p {
 }
 
 .footer {
-   background-color: rgba(24, 64, 8, 0.8);
+   background-color: rgba(0, 0, 0, 0.9);
 }
 
 
