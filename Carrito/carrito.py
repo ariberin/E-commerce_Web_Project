@@ -1,4 +1,3 @@
-
 class Carrito:
 
     def __init__(self, request):
@@ -10,16 +9,16 @@ class Carrito:
 
         if not carrito:
             carrito = self.session['carrito'] = {}
-        else:
+        #else:
 
-            self.carrito = carrito
+        self.carrito = carrito
     
     def agregar(self, producto):
 
         if str(producto.id) not in self.carrito.keys():
             self.carrito[producto.id] = {
                 "producto_id":producto.id,
-                "nombre":producto.nombre,
+                "nombre":producto.titulo,
                 "precio":str(producto.precio),
                 "cantidad":1,
                 "imagen":producto.imagen.url
@@ -28,6 +27,7 @@ class Carrito:
             for k, v in self.carrito.items():
                 if k == str(producto.id):
                     v["cantidad"] += 1
+                    v["precio"] = float(v["precio"])+producto.precio
                     break
         
         self.guardar()
@@ -39,7 +39,9 @@ class Carrito:
     
     def eliminar(self, producto):
 
-        if str(producto.id) in self.carrito:
+        producto.id = str(producto.id)
+
+        if producto.id in self.carrito:
             del self.carrito[producto.id]
             self.guardar()
     
@@ -48,8 +50,9 @@ class Carrito:
         for k, v in self.carrito.items():
             if k == str(producto.id):
                 v["cantidad"] -= 1
+                v["precio"] = float(v["precio"])-producto.precio
                 if v["cantidad"] < 1:
-                    self.eliminar()
+                    self.eliminar(producto)
                 break
         self.guardar()
     
