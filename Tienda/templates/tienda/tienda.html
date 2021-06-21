@@ -18,8 +18,9 @@
                     <h6 class="card-title">{{producto.titulo}}</h6>
                     <h7 class="card-text">${{producto.precio}}</h7>
                 </div>
-                <div class="card-footer text-center">
-                    <a href="{% url 'carrito:agregar' producto.id %}" class="btn btn-success" style="background-color: rgb(255, 115, 0); border-color: rgb(255, 115, 0); ">Agregar a carrito</a>
+                <div class="card-footer text-center" style="background-color: white;">
+                    <a href="{% url 'carrito:agregar' producto.id %}" class="btn btn-success" 
+                    style="background-color: rgb(255, 115, 0); border-color: rgb(255, 115, 0); ">Agregar a carrito</a>
                 </div>
             </div>
         </div>
