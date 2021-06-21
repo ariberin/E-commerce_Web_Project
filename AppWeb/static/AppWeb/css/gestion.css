@@ -155,7 +155,6 @@ p {
 .cta {
   padding-top: 5rem;
   padding-bottom: 5rem;
-  background-color: rgb(242, 245, 240);
 }
 
 .cta .cta-inner {
@@ -174,7 +173,7 @@ p {
   bottom: -0.5rem;
   left: -0.5rem;
   right: -0.5rem;
-  border: 0.25rem solid rgba(255, 255, 255, 0.85);
+  
 }
 
 .cta .cta-innerv {
@@ -300,3 +299,23 @@ ul.errorlist{
   padding: 7px 7px;
 
 }
+
+.cardTienda {
+  
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  margin: 30px 5px;
+  text-align: center;
+  transition: all 0.25s;
+  background-color: white;
+  
+}
+
+.cardTienda:hover{
+  transform: translateY(-15px);
+  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+
+}
+
