@@ -41,12 +41,13 @@ p {
   font-size: 5rem;
   font-weight: 100;
   line-height: 4rem;
+  transition: 1s;
 
 }
 
 .site-heading .site-heading-lower:hover{
-  color: rgb(255, 115, 0) !important;
-  transition: 0.5s;
+  color: rgb(255, 115, 0) ;
+  transition: 1s ; 
 
 }
 
@@ -342,3 +343,14 @@ ul.errorlist{
   box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
 
 }*/
+
+.bi {
+  color: rgba(255, 255, 255, 0.9); 
+  width: 40px; 
+  height: 40px;
+  transition: all 0.25s;
+}
+.bi:hover{
+  transform: translateY(-8.5px);
+  transition: all 0.25s;
+}

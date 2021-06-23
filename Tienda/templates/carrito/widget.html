@@ -14,7 +14,6 @@
             </th>
         </tr>
         <tr>
-            <th>Imagen</th>
             <th >Producto</th>
             <th >Cantidad</th>
             <th >Suma</th>
@@ -24,7 +23,6 @@
         {% if request.session.carrito.items %}
             {% for k, v in request.session.carrito.items %}
                 <tr class="text-center">
-                    <td>{{v.imagen}}</td>
                     <td>{{v.nombre}}</td>
                     <td>{{v.cantidad}}</td>
                     <td>
