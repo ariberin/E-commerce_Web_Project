@@ -6,9 +6,7 @@
 
 <div class="container">
 
-    <div style="float: right ;">
-        {% include "carrito/widget.html" %}
-    </div>
+    
     <div class="row">
         {% for producto in productos %}
         <div class="col-md-3">
@@ -20,7 +18,8 @@
                 </div>
                 <div class="card-footer text-center" style="background-color: white;">
                     <a href="{% url 'carrito:agregar' producto.id %}" class="btn btn-success" 
-                    style="background-color: rgb(255, 115, 0); border-color: rgb(255, 115, 0); ">Agregar a carrito</a>
+                    style="background-color: rgb(255, 115, 0); border-color: rgb(255, 115, 0); white-space: normal; 
+                    display: block; width: auto; ">Agregar a carrito</a>
                 </div>
             </div>
         </div>
