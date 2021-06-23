@@ -9,7 +9,7 @@
         Categorías:
         {% for producto in productos %}
         {% for categoria in producto.categorias.all %}
-        <a href="{% url 'Categorias2' categoria.id %}" class="linksCategorias">{{categoria.nombre}}</a> &nbsp; &nbsp;
+        <a href="#" class="linksCategorias">{{categoria.nombre}}</a> &nbsp; &nbsp;
         &nbsp;
         {% endfor %}
         {% endfor %}
@@ -27,8 +27,7 @@
                     <h7 class="card-text">${{producto.precio}}</h7>
                 </div>
                 <div class="card-footer text-center" style="background-color: white;">
-                    <a href="{% url 'carrito:agregar' producto.id %}" class="btn btn-success" 
-                    style="background-color: rgb(255, 115, 0); border-color: rgb(255, 115, 0); white-space: normal; 
+                    <a href="{% url 'carrito:agregar' producto.id %}" class="btn btn-success" style="background-color: rgb(255, 115, 0); border-color: rgb(255, 115, 0); white-space: normal; 
                     display: block; width: auto; ">Agregar a carrito</a>
                 </div>
             </div>

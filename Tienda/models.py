@@ -2,7 +2,7 @@ from django.db.models.deletion import CASCADE
 from django.db.models.fields import *
 from django.db import models
 from django.db.models.fields.files import ImageField
-from django.db.models.fields.related import ForeignKey
+from django.db.models.fields.related import ForeignKey, ManyToManyField
 
 
 class Categoria(models.Model):  # Mapeo ORM
@@ -20,12 +20,13 @@ class Categoria(models.Model):  # Mapeo ORM
 
 class Producto(models.Model):
     titulo = CharField(max_length=50)
-    categorias = ForeignKey(Categoria, on_delete=CASCADE)
+    categoria = ForeignKey(Categoria, on_delete=CASCADE)
     imagen = ImageField(upload_to='tienda')
     precio = FloatField()
     disponibilidad = BooleanField(default=True)
     created = DateTimeField(auto_now_add=True)
     updated = DateTimeField(auto_now_add=True)
+    #categorias = ManyToManyField(Categoria)
 
     class Meta:
         verbose_name = 'producto'
