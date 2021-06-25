@@ -17,22 +17,18 @@
                 </h2>
                 <div style="text-align: left; font-size: 12px;">Creado por {{post.autor}}</div>
                 <div style="text-align: left; font-size: 12px;">{{post.created}}</div>
+                {% for categoria in post.categorias.all %}
+                <div style="text-align: left; font-size: 12px;">
+                    Categoría:
+                    <a href="{% url 'Categorias' categoria.id %}" class="linksCategorias"
+                        style="color: cornsilk">{{categoria.nombre}}</a>
+                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
 </section>
 
 {% endfor %}
-
-<section>
-    <div style="width: 75%; margin: auto; text-align: center; color: white">
-        Categorías:
-        {% for post in posts %}
-            {% for categoria in post.categorias.all %}
-                <a href="{% url 'Categorias' categoria.id %}" class="linksCategorias">{{categoria.nombre}}</a> &nbsp; &nbsp; &nbsp;
-            {% endfor %}
-        {% endfor %}    
-    </div>
-</section>
 
 {% endblock %}

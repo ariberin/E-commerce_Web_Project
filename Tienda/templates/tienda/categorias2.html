@@ -4,17 +4,24 @@
 
 {% block content %}
 
-<section>
-    <div style="width: 75%; margin: auto; text-align: center; color: white">
-        Categorías:
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.0/js/bootstrap.bundle.min.js"></script>
+
+<div class="dropdown">
+    <button class="btn btn-default" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
+        Filtrar
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         {% for producto in productos %}
         {% for categoria in producto.categorias.all %}
-        <a href="#" class="linksCategorias">{{categoria.nombre}}</a> &nbsp; &nbsp;
-        &nbsp;
+        <a class="dropdown-item" href="{% url 'Categorias2' categoria.id %}"
+            class="linksCategorias">{{categoria.nombre}}</a>
         {% endfor %}
         {% endfor %}
     </div>
-</section>
+</div>
 
 <div class="container">
     <div class="row">

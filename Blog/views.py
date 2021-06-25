@@ -5,7 +5,7 @@ from Blog.models import Post, Categoria
 def blog(request):
 
     posts = Post.objects.all()
-
+    
     return render(request, "Blog/blog.html", {"posts": posts})
 
 def categoria(request, categoria_id):

@@ -12,27 +12,23 @@
             <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{post.imagen.url}}" alt="" style="width: 50%;">
             <div class="intro-text left-0 text-center bg-faded p-5 rounded" style="background-color: rgb(197, 89, 0);">
                 <h2 class="section-heading mb-4">
-                    <span class="section-heading-upper" style="font-size: 40px;">{{post.titulo}}</span>
+                    <span class="section-heading-upper" style="font-size: 40px; color: white">{{post.titulo}}</span>
                     <span class="section-heading-lower" style="font-size: 20px;">{{post.contenido}}</span>
                 </h2>
                 <div style="text-align: left; font-size: 12px;">Creado por {{post.autor}}</div>
                 <div style="text-align: left; font-size: 12px;">{{post.created}}</div>
+                {% for categoria in post.categorias.all %}
+                <div style="text-align: left; font-size: 12px;">
+                    Categoría:
+                    <a href="{% url 'Categorias' categoria.id %}" class="linksCategorias"
+                        style="color: cornsilk">{{categoria.nombre}}</a>
+                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
 </section>
 
 {% endfor %}
-
-<section>
-    <div style="width: 75%; margin: auto; text-align: center; color: white">
-        Categorías:
-        {% for post in posts %}
-            {% for categoria in post.categorias.all %}
-                <a href="{% url 'Categorias' categoria.id %}" class="linksCategorias">{{categoria.nombre}}</a> &nbsp; &nbsp; &nbsp;
-            {% endfor %}
-        {% endfor %}    
-    </div>
-</section>
 
 {% endblock %}
