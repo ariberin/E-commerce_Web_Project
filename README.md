@@ -1,4 +1,6 @@
-DJANGO WEB PROJECT
+DJANGO E-COMMERCE WEB PROJECT
 
-This is my first web project using Django framework, still in construction.
+This is my first web project using Django, HTML and CSS.
+
+Still in construction.
 
